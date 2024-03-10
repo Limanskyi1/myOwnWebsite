@@ -1,0 +1,101 @@
+// Container size  ========================================================
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  width: 100%;
+  padding-right:0.75rem;
+  padding-left: 0.75rem;
+  margin: 0 auto;
+}
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container-md, .container-sm, .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container-lg, .container-md, .container-sm, .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1320px;
+  }
+}
+
+body{
+  background: #000;
+  color: #fff;
+}
+
+section{
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+// Mixins ========================================================
+$maxWidth: 1920;
+@mixin adaptiv-font($pcSize, $mobSize) {
+$addSize: $pcSize - $mobSize;
+$maxWidth: $maxWidth - 320;
+$originalMaxWidth: $maxWidth;
+font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+@media (min-width: #{$originalMaxWidth}px) { 
+  font-size: #{$pcSize}px;
+}
+}
+
+
+
+
+
+@mixin grid($cols,$gap) {
+display: grid;
+grid-template-columns: repeat($cols,1fr);
+gap: $gap;
+}
+
+
+@mixin width($width) {
+    width: calc(#{$width} / 1296 * 100%);
+}
+
+.btn-common {
+  width: fit-content;
+  background: #FFF;
+  padding: 15px 40px;
+  border: 2px solid #fff;
+  color: #000;
+  @include adaptiv-font(16,15);
+  font-weight: 500;
+  line-height: normal;
+  transition: .3s ease-in-out;
+  cursor: pointer;
+  &:hover{
+      background: transparent;
+      color: #fff;
+  }
+}

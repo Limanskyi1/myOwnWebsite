@@ -1,0 +1,189 @@
+// Container size  ========================================================
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  width: 100%;
+  padding-right:0.75rem;
+  padding-left: 0.75rem;
+  margin: 0 auto;
+}
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container-md, .container-sm, .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container-lg, .container-md, .container-sm, .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1320px;
+  }
+}
+
+
+
+section{
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+// Mixins ========================================================
+$maxWidth: 1920;
+@mixin adaptiv-font($pcSize, $mobSize) {
+$addSize: $pcSize - $mobSize;
+$maxWidth: $maxWidth - 320;
+$originalMaxWidth: $maxWidth;
+font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+@media (min-width: #{$originalMaxWidth}px) { 
+  font-size: #{$pcSize}px;
+}
+}
+
+
+
+
+
+@mixin grid($cols,$gap) {
+display: grid;
+grid-template-columns: repeat($cols,1fr);
+gap: $gap;
+}
+
+
+@mixin width($width) {
+    width: calc(#{$width} / 1296 * 100%);
+}
+
+.btn-common {
+  width: fit-content;
+  background: #FFF;
+  padding: 15px 40px;
+  border: 2px solid #fff;
+  color: #000;
+  @include adaptiv-font(16,15);
+  font-weight: 500;
+  line-height: normal;
+  transition: .3s ease-in-out;
+  cursor: pointer;
+  &:hover{
+      background: transparent;
+      color: #fff;
+  }
+}
+
+.footer {
+    position: relative;
+    z-index: 10;
+    .wrapper {
+        display: grid;
+        grid-template-columns: 203px 1fr 151px;
+        @media (max-width: 991.98px){
+            grid-template-columns: repeat(1,1fr);
+        }
+    }
+    .footer__contacts {
+        
+    }
+    .footer__col{
+        display: flex;
+        flex-direction: column;
+        @media (max-width: 991.98px){
+            margin-bottom: 20px;
+        }
+        h3{
+            margin-bottom: 13px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        a,span{
+            color: #848895;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 27.3px;
+        }
+    }
+    .footer__center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @media (max-width: 991.98px){
+            grid-row: 1;
+        }
+        span{
+            color: #848895;
+            font-size: 16px;
+            line-height: 27.3px; 
+            @media (max-width: 991.98px){
+                display: none;
+            }
+        }
+    }
+    .footer__logo {
+        width: 155px;
+        margin-bottom: 24px;
+        @media (max-width: 575.98px){
+            width: 130px;
+            margin-right: auto;
+        }
+    }
+    .footer__getcontact {
+    }
+    .footer__lang {
+    }
+    .copyright-mob{
+        display: none;
+        color: #848895;
+        font-size: 16px;
+        line-height: 27.3px;
+        @media (max-width: 991.98px){
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+
+
+
+.stars g {
+    display: none;
+    animation: moveStars 2s infinite alternate;
+  }
+  
+  @keyframes moveStars {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(10px);
+    }
+  }
