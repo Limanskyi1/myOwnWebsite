@@ -170,10 +170,6 @@ img {
 .intro .intro__img {
   width: calc(705 / 1296 * 100%);
 }
-.intro .intro__img._active {
-  animation: 1.2s rotateInUpRight ease-in-out forwards;
-  animation-delay: 0.6s;
-}
 @media (max-width: 991.98px) {
   .intro .intro__img {
     width: 80%;
@@ -397,6 +393,14 @@ img {
   z-index: 10;
   margin: 0 auto;
 }
+@media (max-width: 991.98px) {
+  .works .wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
 .works .works__item {
   display: flex;
   align-items: center;
@@ -405,6 +409,13 @@ img {
   opacity: 0;
   max-height: 0%;
   height: 0;
+}
+@media (max-width: 992px) {
+  .works .works__item {
+    opacity: 1;
+    max-height: unset;
+    height: unset;
+  }
 }
 .works .works__item.active {
   opacity: 1;
@@ -569,8 +580,19 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100wv;
+  width: 100vw;
   height: 100vh;
+}
+#stars g {
+  animation: moveStar 5s infinite;
+}
+
+#myCanvas {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 #text {

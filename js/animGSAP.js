@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);
-
-    
     const laptopScreen = window.matchMedia('(min-width: 992px)');
 
     if (laptopScreen.matches) {

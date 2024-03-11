@@ -180,10 +180,10 @@ $maxWidth: 1920;
   }
   .intro__img {
     @include width(705);
-    &._active {
-      animation: 1.2s rotateInUpRight ease-in-out forwards;
-      animation-delay: 0.6s;
-    }
+    // &._active {
+    //   animation: 1.2s rotateInUpRight ease-in-out forwards;
+    //   animation-delay: 0.6s;
+    // }
     @media (max-width: 991.98px) {
       width: 80%;
     }
@@ -366,6 +366,12 @@ $maxWidth: 1920;
     position: relative;
     z-index: 10;
     margin: 0 auto;
+    @media (max-width: 991.98px){
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
   }
   .works__item {
     display: flex;
@@ -375,6 +381,11 @@ $maxWidth: 1920;
     opacity: 0;
     max-height: 0%;
     height: 0;
+    @media (max-width: 992px){
+      opacity: 1;
+      max-height: unset;
+      height: unset;
+    }
     &.active {
       opacity: 1;
       max-height: 100%;
@@ -527,8 +538,20 @@ $maxWidth: 1920;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100wv;
+  width: 100vw;
   height: 100vh;
+  g {
+    animation: moveStar 5s infinite;
+  }
+}
+
+
+#myCanvas{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 #text {
